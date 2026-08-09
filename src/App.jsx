@@ -2,9 +2,8 @@ import { useState } from 'react'
 import reactLogo from './assets/react.svg'
 import viteLogo from './assets/vite.svg'
 import heroImg from './assets/hero.png'
-import { MensajeBienvenida } from './components/MensajeBienvenida.jsx'
-
-
+import { Encabezado } from './components/Encabezado'
+import { ListaAlumnos } from './components/ListaAlumnos';
 import './App.css';
 
 
@@ -16,7 +15,8 @@ function App() {
 
  return (
   <>
-   <MensajeBienvenida />
+   <Encabezado usuarioActivo={'Fredy Orellana T'} />
+   <ListaAlumnos />
 
   </>
  );
