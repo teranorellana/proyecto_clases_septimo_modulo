@@ -1,18 +1,29 @@
-import { useState } from 'react'; 
+import { useState, useEffect } from 'react';
 import { TarjetaAlumno } from './TarjetaAlumno';
+import { obtenerAlumnos } from '../services/alumnosService.js';
 
-export const ListaAlumnos = () => {
+export const ListaAlumnos = ({ onSeleccionarAlumno }) => {
+    const [alumnos, setAlumnos] = useState([]);
     const [busqueda, setBusqueda] = useState('');
     const [gradoFiltro, setGradoFiltro] = useState('Todos');
 
-    const alumnos = [
-        { id: 1, nombre: "Fredy Lombardo", grado: "10", seccion: "A" },
-        { id: 2, nombre: "Juan Perez", grado: "11", seccion: "B" },
-        { id: 3, nombre: "Maria Lopez", grado: "12", seccion: "C" },
-    ];
+    useEffect(() => {
+        const fetchAlumnos = async () => {
+            try {
+                const res = await obtenerAlumnos();
+
+                setAlumnos(res);
+            } catch (error) {
+                console.error('Error al obtener los alumnos:', error);
+            }
+        };
+
+            fetchAlumnos();
+        }, []);
 
     const alumnosFiltrados = alumnos.filter((alumno) => {
         const coincideNombre = alumno.nombre.toLowerCase().includes(busqueda.toLowerCase());
+        
         const coincideGrado = gradoFiltro === 'Todos' || alumno.grado === gradoFiltro;
         return coincideNombre && coincideGrado;
     });
@@ -27,20 +38,22 @@ export const ListaAlumnos = () => {
             />
             <select value={gradoFiltro} onChange={(e) => setGradoFiltro(e.target.value)}>
                 <option value="Todos">Todos los grados</option>
-                <option value="10">Grado 10</option>
-                <option value="11">Grado 11</option>
-                <option value="12">Grado 12</option>
+                <option value="7º">Grado 7</option>
+                <option value="8º">Grado 8</option>
+                <option value="9º">Grado 9</option>
             </select>
-            
+
             <p>Mostrando: {alumnosFiltrados.length} alumnos de {alumnos.length}</p>
-            
-            
+
+
             {alumnosFiltrados.map((alumno) => (
                 <TarjetaAlumno
                     key={alumno.id}
+                    id={alumno.id}
                     nombre={alumno.nombre}
                     grado={alumno.grado}
                     seccion={alumno.seccion}
+                    onSeleccionarAlumno={onSeleccionarAlumno}
                 />
             ))}
         </div>

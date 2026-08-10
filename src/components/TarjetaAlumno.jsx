@@ -1,6 +1,12 @@
 import {useState} from 'react';
 
-export const TarjetaAlumno = ({nombre , grado, seccion}) => {
+export const TarjetaAlumno = ({
+    id, 
+    nombre, 
+    grado, 
+    seccion, 
+    onSeleccionarAlumno,
+}) => {
    
     const [matriculaActiva, setMatriculaActiva] = useState(true);
 
@@ -16,6 +22,9 @@ export const TarjetaAlumno = ({nombre , grado, seccion}) => {
 
             <button onClick={toggleMatricula}>
                 {matriculaActiva ? 'Dar de baja' : 'Reactivar matrícula'}
+            </button>
+            <button onClick={() => onSeleccionarAlumno(id)}>
+                Ver detalle
             </button>
             
         </div>
