@@ -3,10 +3,12 @@ import {useState} from 'react';
 export const TarjetaAlumno = ({
     id, 
     nombre, 
+    apellido,
     grado, 
     seccion, 
     onSeleccionarAlumno,
-}) => {
+    onEditarAlumno,
+}) =>{
    
     const [matriculaActiva, setMatriculaActiva] = useState(true);
 
@@ -14,7 +16,7 @@ export const TarjetaAlumno = ({
     
     return (
         <div>
-            <h2>Nombre: {nombre}</h2>
+            <h2>Nombre: {nombre}{apellido}</h2>
             <p>
                 Grado: {grado} / Sección: {seccion}
             </p>
@@ -25,6 +27,9 @@ export const TarjetaAlumno = ({
             </button>
             <button onClick={() => onSeleccionarAlumno(id)}>
                 Ver detalle
+            </button>
+            <button onClick={() => onEditarAlumno(id, nombre, apellido, grado, seccion)}>
+                Editar alumno
             </button>
             
         </div>

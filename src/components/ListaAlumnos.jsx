@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import { TarjetaAlumno } from './TarjetaAlumno';
 import { obtenerAlumnos } from '../services/alumnosService.js';
 
-export const ListaAlumnos = ({ onSeleccionarAlumno }) => {
+export const ListaAlumnos = ({ onSeleccionarAlumno, onEditar, recargar }) => {
     const [alumnos, setAlumnos] = useState([]);
     const [busqueda, setBusqueda] = useState('');
     const [gradoFiltro, setGradoFiltro] = useState('Todos');
@@ -19,7 +19,7 @@ export const ListaAlumnos = ({ onSeleccionarAlumno }) => {
         };
 
             fetchAlumnos();
-        }, []);
+        }, [recargar]);
 
     const alumnosFiltrados = alumnos.filter((alumno) => {
         const coincideNombre = alumno.nombre.toLowerCase().includes(busqueda.toLowerCase());
@@ -51,9 +51,11 @@ export const ListaAlumnos = ({ onSeleccionarAlumno }) => {
                     key={alumno.id}
                     id={alumno.id}
                     nombre={alumno.nombre}
+                    apellido={alumno.apellido}
                     grado={alumno.grado}
                     seccion={alumno.seccion}
                     onSeleccionarAlumno={onSeleccionarAlumno}
+                    onEditarAlumno={onEditar}
                 />
             ))}
         </div>

@@ -1,7 +1,7 @@
 import { useState } from 'react';
-import { crearAlumno } from '../../services/alumnosService';
-import { manejarError } from '../../utils/manejarError';
-import { validarCampos } from '../../utils/validarCampos';
+import { crearAlumno } from '../services/alumnosService';
+import { manejarError } from '../utils/manejarError';
+import { validarCampos } from '../utils/validarCampos';
 
 const estadoInicial = {
     nombre: '',
@@ -11,25 +11,7 @@ const estadoInicial = {
 };
 
 
-const validarCampos = (campos) => {
-    const errores = {}
 
-    if (campos.nombre.trim().length < 2) {
-        errores.nombre = 'El nombre debe tener al menos 2 caracteres'
-    }
-
-    if (campos.apellido.trim().length < 2) {
-        errores.apellido = 'El apellido debe tener al menos 2 caracteres'
-    }
-
-    if (campos.grado === '') {
-        errores.grado = 'Debes seleccionar un grado';
-    }
-
-    if (campos.seccion === '') {
-        errores.seccion = 'Debes seleccionar una seccion';
-    }
-};
 export const FormularioCrear = ({ onGuardado, onCancelar }) => {
     const [campos, setCampos] = useState(estadoInicial);
     const [errores, setErrores] = useState({});
@@ -46,6 +28,12 @@ export const FormularioCrear = ({ onGuardado, onCancelar }) => {
 
     const handleGuardar = async () => {
         const erroresEncontrado = validarCampos(campos);
+
+        if (Object.keys(erroresEncontrado).length > 0) {
+            setErrores(erroresEncontrado);
+
+            return;
+        }
 
         try {
             await crearAlumno(campos);

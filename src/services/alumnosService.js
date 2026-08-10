@@ -16,7 +16,7 @@ export const crearAlumno = async (alumno) => {
     return response.data;
 };
 
-export const actulizarAlumno = async (id, alumno) => {
+export const actualizarAlumno = async (id, alumno) => {
     const response = await api.patch(`/alumnos/${id}`, alumno)
 
     return response.data;

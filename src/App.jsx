@@ -1,18 +1,23 @@
 import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from './assets/vite.svg'
-import heroImg from './assets/hero.png'
 import { Encabezado } from './components/Encabezado';
 import { ListaAlumnos } from './components/ListaAlumnos';
 import {DetalleAlumno} from './components/DetalleAlumno';
+import {FormularioCrear} from './components/FormularioCrear';
+import {FormularioEditar} from './components/FormularioEditar';
 import './App.css';
 
 
 
 function App() {
-  const [idAlumnoSeleccionado, setIdAlumnoSeleccionado] = useState(null)
-  const nombreEstudiante = "Fredy Teran"
-  const horaActual = new Date().getHours()
+  const [idAlumnoSeleccionado, setIdAlumnoSeleccionado] = useState(null);
+
+  const [alumnoEditar, setAlumnoEditar] = useState(null);
+
+  const [mostrarFormularioCrear, setMostrarFormularioCrear] = useState(false);
+
+  const [mostrarFormularioEditar, setMostrarFormularioEditar] = useState(false);
+
+  const [recargar, setRecargar] = useState(false);  
 
   
 
