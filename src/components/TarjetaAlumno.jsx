@@ -28,7 +28,7 @@ export const TarjetaAlumno = ({
             <button onClick={() => onSeleccionarAlumno(id)}>
                 Ver detalle
             </button>
-            <button onClick={() => onEditarAlumno(id, nombre, apellido, grado, seccion)}>
+            <button onClick={() => onEditarAlumno({ id, nombre, apellido, grado, seccion })}>
                 Editar alumno
             </button>
             
