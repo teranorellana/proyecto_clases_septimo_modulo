@@ -22,11 +22,13 @@ export const ListaAlumnos = ({ onSeleccionarAlumno, onEditar, recargar }) => {
         }, [recargar]);
 
     const alumnosFiltrados = alumnos.filter((alumno) => {
-        const coincideNombre = alumno.nombre.toLowerCase().includes(busqueda.toLowerCase());
+        const coincideNombre = `${alumno?.nombre} ${alumno?.apellido}`
+        .toLowerCase()
+        .includes(busqueda.toLowerCase());
         
         const coincideGrado = gradoFiltro === 'Todos' || alumno.grado === gradoFiltro;
         return coincideNombre && coincideGrado;
-    });
+    }); 
 
     return (
         <div>
