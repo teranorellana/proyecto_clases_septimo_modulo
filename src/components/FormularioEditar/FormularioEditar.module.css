@@ -1,0 +1,154 @@
+/* Contenedor principal: Glassmorphism suave y luminoso */
+.formContainer {
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.8);
+  border-radius: 1.5rem; /* Bordes mucho más redondeados y amigables */
+  padding: 1.5rem;
+  box-shadow: 0 10px 40px rgba(167, 139, 250, 0.15), inset 0 0 0 1px rgba(255, 255, 255, 1);
+  width: 100%;
+  color: #334155;
+  font-family: 'Quicksand', 'Nunito', system-ui, sans-serif;
+}
+
+/* Título con degradado juvenil y llamativo */
+.title {
+  font-size: 1.5rem;
+  font-weight: 800;
+  background: linear-gradient(135deg, #f472b6, #8b5cf6, #3b82f6);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  margin: 0 0 1.5rem 0;
+  text-align: center;
+  letter-spacing: -0.02em;
+}
+
+.formGroup {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 1.25rem;
+}
+
+/* Etiquetas en tono violeta suave */
+.label {
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: #8b5cf6;
+  margin-bottom: 0.4rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  padding-left: 0.5rem;
+}
+
+/* Inputs con estilo "burbuja" */
+.input {
+  padding: 0.75rem 1.25rem;
+  font-size: 0.95rem;
+  color: #475569;
+  background-color: #f8fafc;
+  border: 2px solid transparent;
+  border-radius: 1rem;
+  outline: none;
+  transition: all 0.3s ease;
+  width: 100%;
+  box-sizing: border-box;
+  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.02);
+}
+
+/* Resplandor violeta al hacer foco */
+.input:focus {
+  background-color: #ffffff;
+  border-color: #a78bfa;
+  box-shadow: 0 0 0 4px rgba(167, 139, 250, 0.2);
+}
+
+.input::placeholder {
+  color: #cbd5e1;
+}
+
+/* Estado de error: Rojo pastel */
+.inputError {
+  border-color: #fb7185;
+  background-color: #fff1f2;
+}
+
+.inputError:focus {
+  border-color: #fb7185;
+  box-shadow: 0 0 0 4px rgba(251, 113, 133, 0.2);
+}
+
+.errorText {
+  color: #e11d48;
+  font-size: 0.75rem;
+  margin: 0.4rem 0 0 0.5rem;
+  font-weight: 600;
+}
+
+.buttonGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin-top: 2rem;
+}
+
+/* Botones estilo píldora */
+.btnPrimary, .btnSecondary {
+  padding: 0.85rem 1.5rem;
+  border-radius: 999px; /* Hace que los botones sean completamente redondos en los extremos */
+  font-size: 0.95rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  text-align: center;
+  border: none;
+}
+
+/* Botón principal: Degradado continuo */
+.btnPrimary {
+  background: linear-gradient(135deg, #8b5cf6, #3b82f6);
+  color: #ffffff;
+  box-shadow: 0 4px 15px rgba(139, 92, 246, 0.3);
+}
+
+.btnPrimary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(139, 92, 246, 0.4);
+  filter: brightness(1.1);
+}
+
+/* Botón secundario: Sutil y limpio */
+.btnSecondary {
+  background: #f1f5f9;
+  color: #64748b;
+}
+
+.btnSecondary:hover {
+  background: #e2e8f0;
+  color: #334155;
+  transform: translateY(-1px);
+}
+
+/* Adaptación para Tablet y Desktop */
+@media (min-width: 768px) {
+  .formContainer {
+    padding: 2.5rem;
+    max-width: 500px;
+  }
+
+  .buttonGroup {
+    flex-direction: row;
+    justify-content: space-between;
+  }
+  
+  /* En escritorio, el botón principal ocupa más espacio para darle jerarquía visual */
+  .btnPrimary {
+    flex: 2;
+  }
+  
+  .btnSecondary {
+    flex: 1;
+    order: -1;
+  }
+}

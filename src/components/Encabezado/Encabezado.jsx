@@ -1,9 +1,13 @@
-export const Encabezado = ({usuarioActivo}) => {
-  return (
-    <header>
-      <h1>Colegio San Marcos - Sistema de Gestion</h1>
+import styles from './Encabezado.module.css';
 
-      <p>Usuario activo: {usuarioActivo}</p>
+export const Encabezado = ({ usuarioActivo }) => {
+  return (
+    <header className={styles.header}>
+      <h1 className={styles.title}>Colegio San Marcos - Sistema de Gestion</h1>
+
+      <p className={styles.userInfo}>
+        Usuario activo: <span className={styles.userName}>{usuarioActivo}</span>
+      </p>
     </header>
   );
-}
+};

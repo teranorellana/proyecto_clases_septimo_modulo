@@ -1,0 +1,172 @@
+/* Contenedor principal con efecto Glassmorphism (Cristal) */
+.formContainer {
+  background: linear-gradient(135deg, rgba(15, 23, 42, 0.85), rgba(30, 41, 59, 0.95));
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(56, 189, 248, 0.2);
+  border-radius: 1rem;
+  padding: 1.5rem;
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3), inset 0 0 0 1px rgba(255, 255, 255, 0.05);
+  width: 100%;
+  color: #e2e8f0;
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+}
+
+/* Título con texto en degradado holográfico */
+.title {
+  font-size: 1.25rem;
+  font-weight: 800;
+  background: linear-gradient(90deg, #00f2fe 0%, #4facfe 50%, #818cf8 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  margin: 0 0 1.5rem 0;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  border-bottom: 1px solid rgba(56, 189, 248, 0.15);
+  padding-bottom: 0.75rem;
+}
+
+.formGroup {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 1.25rem;
+}
+
+/* Etiquetas estilo panel de control */
+.label {
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: #94a3b8;
+  margin-bottom: 0.4rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+/* Inputs futuristas */
+.input {
+  padding: 0.6rem 0.875rem;
+  font-size: 0.875rem;
+  color: #e0f2fe;
+  background-color: rgba(15, 23, 42, 0.6);
+  border: 1px solid rgba(148, 163, 184, 0.3);
+  border-radius: 0.5rem;
+  outline: none;
+  transition: all 0.3s ease;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+/* Opciones del select en modo oscuro */
+.input option {
+  background-color: #0f172a;
+  color: #e0f2fe;
+}
+
+.input::placeholder {
+  color: #475569;
+}
+
+/* Brillo al hacer focus (Efecto Neón Cian) */
+.input:focus {
+  border-color: #38bdf8;
+  box-shadow: 0 0 12px rgba(56, 189, 248, 0.4), inset 0 0 4px rgba(56, 189, 248, 0.1);
+  background-color: rgba(15, 23, 42, 0.8);
+}
+
+/* Estado de error en color rojo/magenta neón */
+.inputError {
+  border-color: #f43f5e;
+}
+
+.inputError:focus {
+  border-color: #f43f5e;
+  box-shadow: 0 0 12px rgba(244, 63, 94, 0.4);
+}
+
+.errorText {
+  color: #fb7185;
+  font-size: 0.75rem;
+  margin: 0.4rem 0 0 0;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+.errorText::before {
+  content: '⚠';
+  font-size: 0.8rem;
+}
+
+/* Contenedor de botones */
+.buttonGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 0.875rem;
+  margin-top: 2rem;
+}
+
+/* Botones */
+.btnPrimary, .btnSecondary {
+  padding: 0.7rem 1.2rem;
+  border-radius: 0.5rem;
+  font-size: 0.875rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Botón principal: Degradado vibrante */
+.btnPrimary {
+  background: linear-gradient(90deg, #0ea5e9, #6366f1);
+  color: #ffffff;
+  border: none;
+  box-shadow: 0 4px 15px rgba(99, 102, 241, 0.4);
+}
+
+.btnPrimary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(99, 102, 241, 0.6);
+  filter: brightness(1.1);
+}
+
+.btnPrimary:active {
+  transform: translateY(1px);
+}
+
+/* Botón secundario: Estilo "Holo-Ghost" */
+.btnSecondary {
+  background: transparent;
+  color: #38bdf8;
+  border: 1px solid rgba(56, 189, 248, 0.5);
+  box-shadow: 0 0 0 rgba(0,0,0,0);
+}
+
+.btnSecondary:hover {
+  background: rgba(56, 189, 248, 0.1);
+  border-color: #38bdf8;
+  box-shadow: inset 0 0 10px rgba(56, 189, 248, 0.2);
+}
+
+/* Adaptación para Tablet y Desktop */
+@media (min-width: 768px) {
+  .formContainer {
+    padding: 2rem;
+    max-width: 550px;
+  }
+
+  .buttonGroup {
+    flex-direction: row;
+    justify-content: flex-end;
+  }
+
+  .btnSecondary {
+    order: -1; 
+  }
+}

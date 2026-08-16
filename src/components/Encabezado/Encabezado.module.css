@@ -1,0 +1,55 @@
+/* Estilos base (Mobile First) */
+.header {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  padding: 1rem 1.5rem;
+  background-color: #ffffff;
+  border-bottom: 1px solid #e2e8f0;
+  gap: 0.5rem;
+  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+}
+
+.title {
+  font-size: 1.125rem;
+  font-weight: 600;
+  color: #1e293b; /* Tono pizarra oscuro, corporativo */
+  margin: 0;
+  line-height: 1.2;
+}
+
+.userInfo {
+  font-size: 0.875rem;
+  color: #64748b; /* Tono gris medio para texto secundario */
+  margin: 0;
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+}
+
+.userName {
+  font-weight: 500;
+  color: #0f172a;
+  background-color: #f1f5f9;
+  padding: 0.2rem 0.6rem;
+  border-radius: 9999px; /* Aspecto de 'badge' o píldora */
+}
+
+/* Adaptación para Tablet y Desktop */
+@media (min-width: 768px) {
+  .header {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1.25rem 2rem;
+  }
+
+  .title {
+    font-size: 1.25rem;
+  }
+
+  .userInfo {
+    font-size: 0.9375rem;
+  }
+}

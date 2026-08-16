@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { crearAlumno } from '../../services/alumnosService';
 import { manejarError } from '../../utils/manejarError';
 import { validarCampos } from '../../utils/validarCampos';
+import styles from './FormularioCrear.module.css'; // <-- Importando estilos futuristas
 
 const estadoInicial = {
     nombre: '',
@@ -10,15 +11,12 @@ const estadoInicial = {
     seccion: '',
 };
 
-
-
 export const FormularioCrear = ({ onGuardado, onCancelar }) => {
     const [campos, setCampos] = useState(estadoInicial);
     const [errores, setErrores] = useState({});
 
     const handleChange = (e) => {
         const { name, value } = e.target;
-
         setCampos((anterior) => ({ ...anterior, [name]: value }));
 
         if (errores[name]) {
@@ -31,7 +29,6 @@ export const FormularioCrear = ({ onGuardado, onCancelar }) => {
 
         if (Object.keys(erroresEncontrado).length > 0) {
             setErrores(erroresEncontrado);
-
             return;
         }
 
@@ -45,62 +42,73 @@ export const FormularioCrear = ({ onGuardado, onCancelar }) => {
     };
 
     return (
-        <div>
-            <h2>Registrar nuevo alumno</h2>
+        <div className={styles.formContainer}>
+            <h2 className={styles.title}>Registrar Nuevo Estudiante</h2>
 
-            <div>
-                <label>Nombre</label>
+            <div className={styles.formGroup}>
+                <label className={styles.label}>Nombre</label>
                 <input
                     type='text'
                     name='nombre'
                     value={campos.nombre}
                     onChange={handleChange}
                     placeholder='Ej: Fredy'
+                    className={`${styles.input} ${errores.nombre ? styles.inputError : ''}`}
                 />
-
-                {errores.nombre && <p>{errores.nombre}</p>}
+                {errores.nombre && <span className={styles.errorText}>{errores.nombre}</span>}
             </div>
 
-            <div>
-                <label>Apellido</label>
+            <div className={styles.formGroup}>
+                <label className={styles.label}>Apellido</label>
                 <input
                     type='text'
                     name='apellido'
                     value={campos.apellido}
                     onChange={handleChange}
                     placeholder='Ej: Teran'
+                    className={`${styles.input} ${errores.apellido ? styles.inputError : ''}`}
                 />
-
-                {errores.apellido && <p>{errores.apellido}</p>}
+                {errores.apellido && <span className={styles.errorText}>{errores.apellido}</span>}
             </div>
 
-            <div>
-                <label>Grado</label>
-                <select name='grado' value={campos.grado} onChange={handleChange}>
-                    <option>Selecciona un grado</option>
-                    <option value='7º'>7to</option>
-                    <option value='8º'>8to</option>
-                    <option value='9º'>9to</option>
+            <div className={styles.formGroup}>
+                <label className={styles.label}>Nivel / Grado</label>
+                <select
+                    name='grado'
+                    value={campos.grado}
+                    onChange={handleChange}
+                    className={`${styles.input} ${errores.grado ? styles.inputError : ''}`}
+                >
+                    <option value="">-- Seleccionar nivel --</option>
+                    <option value='7to'>7º Grado</option>
+                    <option value='8to'>8º Grado</option>
+                    <option value='9to'>9º Grado</option>
                 </select>
-
-                {errores.grado && <p>{errores.grado}</p>}
+                {errores.grado && <span className={styles.errorText}>{errores.grado}</span>}
             </div>
 
-            <div>
-                <label>Seccion</label>
-                <select name='seccion' value={campos.seccion} onChange={handleChange}>
-                    <option>Selecciona una seccion</option>
-                    <option value='A'>A</option>
-                    <option value='B'>B</option>
+            <div className={styles.formGroup}>
+                <label className={styles.label}>Módulo / Sección</label>
+                <select
+                    name='seccion'
+                    value={campos.seccion}
+                    onChange={handleChange}
+                    className={`${styles.input} ${errores.seccion ? styles.inputError : ''}`}
+                >
+                    <option value="">-- Seleccionar módulo --</option>
+                    <option value='A'>Sección A</option>
+                    <option value='B'>Sección B</option>
                 </select>
-
-                {errores.seccion && <p>{errores.seccion}</p>}
+                {errores.seccion && <span className={styles.errorText}>{errores.seccion}</span>}
             </div>
 
-            <div>
-                <button onClick={handleGuardar}>Registrar alumno</button>
-
-                <button onClick={onCancelar}>Cancelar</button>
+            <div className={styles.buttonGroup}>
+                <button className={styles.btnPrimary} onClick={handleGuardar}>
+                    Inicializar Registro
+                </button>
+                <button className={styles.btnSecondary} onClick={onCancelar}>
+                    Abortar
+                </button>
             </div>
         </div>
     );

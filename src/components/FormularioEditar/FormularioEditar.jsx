@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { actualizarAlumno } from '../../services/alumnosService';
 import { validarCampos } from '../../utils/validarCampos';
 import { manejarError } from '../../utils/manejarError';
+import styles from './FormularioEditar.module.css'; // <-- Importando estilos
 
 const estadoInicial = {
   nombre: '',
@@ -16,10 +17,10 @@ export const FormularioEditar = ({ alumnoEditar, onGuardado, onCancelar }) => {
 
   useEffect(() => {
     setCampos({
-      nombre: alumnoEditar?.nombre,
-      apellido: alumnoEditar?.apellido,
-      grado: alumnoEditar?.grado,
-      seccion: alumnoEditar?.seccion,
+      nombre: alumnoEditar?.nombre || '',
+      apellido: alumnoEditar?.apellido || '',
+      grado: alumnoEditar?.grado || '',
+      seccion: alumnoEditar?.seccion || '',
     });
   }, [alumnoEditar]);
 
@@ -38,7 +39,6 @@ export const FormularioEditar = ({ alumnoEditar, onGuardado, onCancelar }) => {
 
     if (Object.keys(erroresEncontrado).length > 0) {
       setErrores(erroresEncontrado);
-
       return;
     }
 
@@ -52,62 +52,73 @@ export const FormularioEditar = ({ alumnoEditar, onGuardado, onCancelar }) => {
   };
 
   return (
-    <div>
-      <h2>Actualizar alumno</h2>
+    <div className={styles.formContainer}>
+      <h2 className={styles.title}>Actualizar Alumno</h2>
 
-      <div>
-        <label>Nombre</label>
+      <div className={styles.formGroup}>
+        <label className={styles.label}>Nombre</label>
         <input
           type='text'
           name='nombre'
           value={campos.nombre}
           onChange={handleChange}
           placeholder='Ej: Fredy'
+          className={`${styles.input} ${errores.nombre ? styles.inputError : ''}`}
         />
-
-        {errores.nombre && <p>{errores.nombre}</p>}
+        {errores.nombre && <p className={styles.errorText}>{errores.nombre}</p>}
       </div>
 
-      <div>
-        <label>Apellido</label>
+      <div className={styles.formGroup}>
+        <label className={styles.label}>Apellido</label>
         <input
           type='text'
           name='apellido'
           value={campos.apellido}
           onChange={handleChange}
-          placeholder='Ej: Teran'
+          placeholder='Ej: Terán'
+          className={`${styles.input} ${errores.apellido ? styles.inputError : ''}`}
         />
-
-        {errores.apellido && <p>{errores.apellido}</p>}
+        {errores.apellido && <p className={styles.errorText}>{errores.apellido}</p>}
       </div>
 
-      <div>
-        <label>Grado</label>
-        <select name='grado' value={campos.grado} onChange={handleChange}>
-          <option>Selecciona un grado</option>
-          <option value='7to'>7to</option>
-          <option value='8to'>8to</option>
-          <option value='9to'>9to</option>
+      <div className={styles.formGroup}>
+        <label className={styles.label}>Grado</label>
+        <select 
+          name='grado' 
+          value={campos.grado} 
+          onChange={handleChange}
+          className={`${styles.input} ${errores.grado ? styles.inputError : ''}`}
+        >
+          <option value="">Selecciona un grado</option>
+          <option value='7to'>7º Grado</option>
+          <option value='8to'>8º Grado</option>
+          <option value='9to'>9º Grado</option>
         </select>
-
-        {errores.grado && <p>{errores.grado}</p>}
+        {errores.grado && <p className={styles.errorText}>{errores.grado}</p>}
       </div>
 
-      <div>
-        <label>Seccion</label>
-        <select name='seccion' value={campos.seccion} onChange={handleChange}>
-          <option>Selecciona una seccion</option>
+      <div className={styles.formGroup}>
+        <label className={styles.label}>Sección</label>
+        <select 
+          name='seccion' 
+          value={campos.seccion} 
+          onChange={handleChange}
+          className={`${styles.input} ${errores.seccion ? styles.inputError : ''}`}
+        >
+          <option value="">Selecciona una sección</option>
           <option value='A'>A</option>
           <option value='B'>B</option>
         </select>
-
-        {errores.seccion && <p>{errores.seccion}</p>}
+        {errores.seccion && <p className={styles.errorText}>{errores.seccion}</p>}
       </div>
 
-      <div>
-        <button onClick={handleGuardar}>Actualizar alumno</button>
-
-        <button onClick={onCancelar}>Cancelar</button>
+      <div className={styles.buttonGroup}>
+        <button className={styles.btnPrimary} onClick={handleGuardar}>
+          Actualizar alumno
+        </button>
+        <button className={styles.btnSecondary} onClick={onCancelar}>
+          Cancelar
+        </button>
       </div>
     </div>
   );

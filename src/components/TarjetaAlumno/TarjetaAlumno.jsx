@@ -8,7 +8,7 @@ export const TarjetaAlumno = ({
   grado,
   seccion,
   onSeleccionarAlumno,
-  onEditar,
+  onEditar, // <-- Nombre correcto de la prop
 }) => {
   const [matriculaActiva, setMatriculaActiva] = useState(true);
 
@@ -37,9 +37,8 @@ export const TarjetaAlumno = ({
 
       <button onClick={() => onSeleccionarAlumno(id)}>Ver detalle</button>
 
-      <button
-        onClick={() => onEditar({ id, nombre, apellido, grado, seccion })}
-      >
+      {/* CORRECCIÓN: Usamos onEditar y le pasamos solo el id */}
+      <button onClick={() => onEditar(id)}>
         Editar
       </button>
     </div>
