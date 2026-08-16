@@ -1,6 +1,6 @@
 import { Navigate } from 'react-router-dom';
 import { Encabezado } from '../../components/Encabezado/Encabezado';
-//import { obtenerRolUsuario } from '../../utils/jwt';
+import { obtenerRolUsuario } from '../../utils/jwt';
 
 export const RutaProtegida = ({ children, rol }) => {
   const token = localStorage.getItem('token');
