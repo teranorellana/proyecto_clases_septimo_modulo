@@ -1,5 +1,5 @@
 import { useNavigate } from 'react-router-dom';
-import { FormularioCrear } from '../components/FormularioCrear';
+import { FormularioCrear} from '../../components/FormularioCrear/FormularioCrear';
 
 export const PaginaCrearAlumno = () => {
   const navigate = useNavigate();

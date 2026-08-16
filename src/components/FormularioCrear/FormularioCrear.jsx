@@ -1,7 +1,7 @@
 import { useState } from 'react';
-import { crearAlumno } from '../services/alumnosService';
-import { manejarError } from '../utils/manejarError';
-import { validarCampos } from '../utils/validarCampos';
+import { crearAlumno } from '../../services/alumnosService';
+import { manejarError } from '../../utils/manejarError';
+import { validarCampos } from '../../utils/validarCampos';
 
 const estadoInicial = {
     nombre: '',

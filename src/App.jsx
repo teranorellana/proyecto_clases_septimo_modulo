@@ -1,9 +1,9 @@
 import { Routes, Route } from 'react-router-dom'
-import { Encabezado } from './components/Encabezado';
-import { PaginaListaAlumnos } from './pages/PaginaListaAlumnos'
-import { PaginaDetalleAlumno } from './pages/PaginaDetalleAlumno'
-import { PaginaEditarAlumno } from './pages/PaginaEditarAlumno'
-import { PaginaCrearAlumno } from './pages/PaginaCrearAlumno'
+import { Encabezado } from './components/Encabezado/Encabezado';
+import { PaginaListaAlumnos } from './pages/PaginaListaAlumnos/PaginaListaAlumnos'
+import { PaginaDetalleAlumno } from './pages/PaginaDetalleAlumno/PaginaDetalleAlumno'
+import { PaginaEditarAlumno } from './pages/PaginaEditarAlumno/PaginaEditarAlumno'
+import { PaginaCrearAlumno } from './pages/PaginaCrearAlumno/PaginaCrearAlumno'
 
 import './App.css';
 

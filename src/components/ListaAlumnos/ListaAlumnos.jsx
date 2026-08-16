@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
-import { TarjetaAlumno } from './TarjetaAlumno';
-import { obtenerAlumnos } from '../services/alumnosService.js';
+import { TarjetaAlumno } from '../TarjetaAlumno/TarjetaAlumno.jsx';
+import { obtenerAlumnos } from '../../services/alumnosService.js';
 import { useNavigate } from 'react-router-dom'
 
 const ELEMENTOS_POR_PAGINA = 2;

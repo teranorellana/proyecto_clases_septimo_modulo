@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react'
-import { obtenerAlumnoPorId } from '../services/alumnosService';
+import { obtenerAlumnoPorId } from '../../services/alumnosService';
 
 export const DetalleAlumno = ({ idAlumno, onCerrar}) => {
     const [alumno, setAlumno] = useState(null);

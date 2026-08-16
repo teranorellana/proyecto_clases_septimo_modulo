@@ -1,8 +1,8 @@
 import { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
-import { FormularioEditar } from '../components/FormularioEditar';
-import { obtenerAlumnoPorId } from '../services/alumnosService';
-import { manejarError } from '../utils/manejarError';
+import { FormularioEditar } from '../../components/FormularioEditar/FormularioEditar';
+import { obtenerAlumnoPorId } from '../../services/alumnosService';
+
 
 export const PaginaEditarAlumno = () => {
     const { id } = useParams();
@@ -17,7 +17,8 @@ export const PaginaEditarAlumno = () => {
 
                 setAlumno(res);
             } catch (error) {
-                console.error('Error al obtener un alumno por su id: ', error);
+                console.error('Eerror al obtener un alumno por su id: ', error);
+                
             }
         };
 

@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
-import { actualizarAlumno } from '../services/alumnosService';
-import { validarCampos } from '../utils/validarCampos';
-import { manejarError } from '../utils/manejarError';
+import { actualizarAlumno } from '../../services/alumnosService';
+import { validarCampos } from '../../utils/validarCampos';
+import { manejarError } from '../../utils/manejarError';
 
 const estadoInicial = {
   nombre: '',
