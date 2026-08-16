@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { TarjetaAlumno } from '../TarjetaAlumno/TarjetaAlumno.jsx';
 import { obtenerAlumnos } from '../../services/alumnosService.js';
 import { useNavigate } from 'react-router-dom'
+import styles from './ListaAlumnos.module.css';
 
 const ELEMENTOS_POR_PAGINA = 2;
 
@@ -68,8 +69,7 @@ export const ListaAlumnos = ({ recargar }) => {
 
             <p>Mostrando: {alumnosFiltrados.length} alumnos de {alumnos.length}</p>
 
-
-            {alumnosPagina.map((alumno) => (
+        <div className={styles.lista}> {alumnosPagina.map((alumno) => (
                 <TarjetaAlumno
                     key={alumno.id}
                     id={alumno.id}
@@ -81,7 +81,8 @@ export const ListaAlumnos = ({ recargar }) => {
                     onEditarAlumno={(alumno) => navigate(`/alumnos/${alumno.id}/editar`)}
                 />
             ))}
-
+</div>
+           
             {
                 totalPaginas > 1 && (
                     <div>
